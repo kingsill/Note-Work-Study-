@@ -36,7 +36,8 @@
 
 5. 方法可以自动解指针引用
 
-6. 
+6. GO指南Web爬虫
+    使用sync.Mutex确保线程安全，利用waitgroup确保主进程不在各进程完成之前退出
 
 ## threads
 

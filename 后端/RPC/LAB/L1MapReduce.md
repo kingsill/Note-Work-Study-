@@ -85,7 +85,7 @@ reducef func(key string, values []string) string)
 
 ## rpc
 
-
+`coordinator`函数用来生成唯一id
 
  
 

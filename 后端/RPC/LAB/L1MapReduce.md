@@ -91,12 +91,14 @@ reducef func(key string, values []string) string)
 > type Coordinator struct{
 > 	files   []string
 > 	nReduce int
-> 
+> 当前处在什么阶段？ state
+>     
+>     
 > }
 > 
 > type dic struct{
->     status 0or1or2
->     id       
+>  status 0or1or2
+>  id       
 > }
 > ```
 >

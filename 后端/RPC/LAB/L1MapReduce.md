@@ -79,13 +79,47 @@ reducef func(key string, values []string) string)
 需要创建几个map worker—根据几个文件
 几个 reduce worker—根据设置，这里为10
 
-如何查询worker状态
+`coordinator`函数用来生成唯一id
+
+
+
+ Coordinator 结构体定义
+
+用来在不同rpc之间通信，所以其内容是公用的？
+
+> ```go
+> type Coordinator struct{
+> 	files   []string
+> 	nReduce int
+> 
+> }
+> 
+> type dic struct{
+>     status 0or1or2
+>     id       
+> }
+> ```
+>
+> map[file string]
+
+如何解决并发问题？？
+
+怎么查询worker的状态？？
+
+> worker主动向coordinator发送信息
 
 
 
 ## rpc
 
-`coordinator`函数用来生成唯一id
+args 请求参数怎么定义
 
- 
-
+> type args struct{
+>
+> 自己的身份信息
+>
+> 自己的状态信息
+>
+> 
+>
+> }

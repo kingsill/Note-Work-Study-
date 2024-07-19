@@ -125,3 +125,42 @@ args 请求参数怎么定义
 > 
 >
 > }
+
+
+
+
+
+## 纠错
+
+1. 6.5840/mr.writeKVs({0xc000e90000, 0x1462a, 0x16800?}, 0xc00007d100, {0xc39d00, 0x0, 0x0?})
+           /home/wang2/6.5840/src/mr/worker.go:109 +0x285
+
+2. *** Starting wc test.
+   panic: runtime error: index out of range [1141634764] with length 0
+
+   **ihash取余**
+
+3.  runtime error: integer divide by zero
+
+reply.NReduce = c.nReduce // 设置 NReduce
+
+4. cat: 'mr-out*': No such file or directory
+   --- saw 0 workers rather than 2
+   --- map parallelism test: FAIL
+   cat: 'mr-out*': No such file or directory
+   --- map workers did not run in parallel
+   --- map parallelism test: FAIL
+
+   cat: 'mr-out*': No such file or directory
+   --- too few parallel reduces.
+   --- reduce parallelism test: FAIL
+   文件句柄问题
+
+5. sort: cannot read: 'mr-out*': No such file or directory
+   cmp: EOF on mr-wc-all which is empty
+   2024/07/19 11:15:10 dialing:dial unix /var/tmp/5840-mr-1000: connect: connection refused
+   2024/07/19 11:15:10 dialing:dial unix /var/tmp/5840-mr-1000: connect: connection refused
+   2024/07/19 11:15:10 dialing:dial unix /var/tmp/5840-mr-1000: connect: connection refused
+
+6. coordinator结构体的并发读取问题
+   dialing:dial-http unix /var/tmp/5840-mr-1000: read unix @->/var/tmp/5840-mr-1000: read: connection reset by peer

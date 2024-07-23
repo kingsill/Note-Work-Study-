@@ -164,3 +164,8 @@ reply.NReduce = c.nReduce // 设置 NReduce
 
 6. coordinator结构体的并发读取问题
    dialing:dial-http unix /var/tmp/5840-mr-1000: read unix @->/var/tmp/5840-mr-1000: read: connection reset by peer
+
+7. invalid memory address or nil pointer dereference
+   [signal SIGSEGV: segmentation violation code=0x1 addr=0x10 pc=0x743519]
+   call(args，reply)似乎不能改变args的内容
+

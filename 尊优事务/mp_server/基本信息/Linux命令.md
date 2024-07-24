@@ -15,3 +15,10 @@ ps -ef | grep xxx #查看xxx相关进程
 netstat -aon | findstr :8080
 ```
 
+查看现在使用的端口
+
+```shell
+netstat -ntlp
+```
+
+go env -w GOOS=linux

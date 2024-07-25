@@ -88,3 +88,89 @@ record
 
 
 client与master和chunkserver都有沟通，三者直接联系 ，没有中间媒介
+
+## 2.4 单个 master
+
+不参与读写，master不是瓶颈
+
+客户端client 向 master 询问 应该请求哪个 chunkserver
+
+### 2.5 chunk Size 块大小
+
+文中为64MB
+
+**Big Size的优势**
+
+- 减少了client和master交互的次数
+- client在一个大的chunk上可能进行更多操作，再减少交互
+- 节省了master的元数据存储，方便存储到内存上
+
+**big Size 的劣势**
+
+- 出现热点问题hot spots
+
+### 2.6 Metadata 
+
+存储三种主要信息
+
+1. 文件、块名称 namespace
+2. 文件到块的映射 mapping
+3. 块副本的位置 locations
+
+
+
+所有元数据都保存在主内存中
+
+
+
+前两种类型(名称空间和文件到块映射)也通过将更改记录到存储在主服务器本地磁盘上并复制到远程机器上的操作日志中来保持持久化。
+
+主服务器不持久化存储块位置信息。相反，它会在主启动时以及每当有chunkserver加入集群时询问每个chunkserver的块。
+
+> 这样可以在集群增加或减少chunkserver时不用和master保持一致，master直接查询即可
+
+#### operation log
+
+它不仅是元数据的唯一持久记录，而且还用作定义并发操作顺序的逻辑时间线。
+
+在元数据更改持久化之前，不能使更改对客户机可见。
+
+在日志记录刷新到磁盘后才相应client
+
+
+
+定时或者在一定操作量后**自动保存检查点**，方便回放操作
+
+checkpoints存储形式B-tree
+
+### 2.7 Consistency Model
+
+#### Guarantees
+
+文件命名空间namespaces为原子操作
+
+![image-20240725164322011](Article GFS.assets/image-20240725164322011.png)
+
+文件区域状态有consistent和inconsistent
+
+并发成功的突变使区域未定义，但保持一致:所有客户端都看到相同的数据，但它可能不反映任何一个突变所写的内容。
+
+相同顺序执行操作
+使用块版本号来检测是否错过突变
+
+## System Interactions
+
+三种操作
+
+- data mutations 数据突变
+- atomic record append 原子记录追加
+- snapshot 快照
+
+### 3.1 Leases and Mutation Order
+
+突变是一种改变数据块内容或元数据的操作，例如写操作或追加操作。在所有的chunk副本运行
+
+> 我们使用leases租约来维护副本间一致的mutations顺序
+
+主服务器将块租期授予其中一个副本，我们称之为primary
+

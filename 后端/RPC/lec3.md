@@ -36,9 +36,52 @@ Master Data
 
 
 
-## 步骤
+## 各操作步骤
 
 ### 1. READ
+
+1. **client** filename offset(range) -> **master**
+2. **master** chunk handle & list of server  -> **client**
+3. **client** -> **chunk server**
+
+## 2. WRITE(append)
+
+**No Primary**? **Master**
+
+1. find the up-to-date replica
+
+   > Master保存版本号在自己本地，防止有最新chunk的server离线
+
+2. **pick a Primary**,others as Secondary
+
+   > Primary 来接受client操作，同步到其他Secondary
+
+3. Increament version number
+
+4. TELL P,S.v# —–give Primary **LEASE**
+
+   > 防止脑裂SPLIT BRAIN
+   >
+   > 租期内即使失效不重新指定PRIMARY
+
+5. save these
+
+ 
+
+**Primary**
+
+1. pick a offset -> Secondaries (all replicas told to write at offset)
+
+2. 数据缓冲
+
+3. if all S “yes”, P-> “success” C  ->4
+   else “no” ->重新请求追加，跳过4？？放弃本次
+
+   > Primary一定要成功
+
+4. 主节点开始写入
+
+
 
 
 

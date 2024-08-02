@@ -1,0 +1,1 @@
+[The Go Memory Model - The Go Programming Language](https://go.dev/ref/mem#introduction)

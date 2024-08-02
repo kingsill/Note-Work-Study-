@@ -131,5 +131,17 @@ Vmotion的相关信息，主机和从机的Vmotion相比不同Vmotion都有所�
 
 
 
+为什么同步磁盘操作会导致非确定性？
 
+> 非确定性是什么
+
+
+
+[ARM SMMU原理与IOMMU技术（“VT-d” DMA、I/O虚拟化、内存虚拟化）_asid pasid-CSDN博客](https://blog.csdn.net/Rong_Toa/article/details/108997226)
+
+
+
+[幂等 (idempotence) 的概念-CSDN博客](https://blog.csdn.net/final_me/article/details/108031400)
+
+### 3.5 Implementation Issues for Network IO
 

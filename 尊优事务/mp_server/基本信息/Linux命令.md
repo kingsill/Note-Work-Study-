@@ -6,6 +6,8 @@ service mysql status
 
 查看系统进行
 
+**lsof -i :端口号**
+
 ```shell
 ps aux #查看所有进程
 ps -ef | grep xxx #查看xxx相关进程

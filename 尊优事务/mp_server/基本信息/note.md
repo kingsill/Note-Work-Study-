@@ -104,25 +104,26 @@ if tmp, ok := c.Get("user"); ok {
     
 ## middleware.go 中间件业务
 - NOTE：跨域请求相关
-    在处理跨域请求时，浏览器会在某些条件下自动发起 **OPTIONS** 请求，这也被称为“预检”请求。以下是触发 OPTIONS 请求的一些常见条件：
-
+    
+- [10分钟和跨域说拜拜|跨域问题so easy_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Nm42157dH/?spm_id_from=333.999.0.0&vd_source=d3dafb5faaa2391d25c0cffb421d2fa0)在处理跨域请求时，浏览器会在某些条件下自动发起 **OPTIONS** 请求，这也被称为“预检”请求。以下是触发 OPTIONS 请求的一些常见条件：
+    
     1. **跨域请求**：当一个请求尝试访问与其不同源（协议、域名或端口不同）的资源时。
     2. **自定义请求头**：如果请求中包含非标准的自定义头部字段。
     3. **特定的 HTTP 方法**：如 PUT、DELETE 等，这些方法可能对服务器数据产生副作用。
     4. **特定的 Content-Type**：当 POST 请求的 `Content-Type` 是 `application/json`, `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain` 之外的其他类型时。
-
+    
     当这些条件中的任何一个满足时，浏览器会先发送一个 OPTIONS 请求到服务器，询问服务器是否允许这样的跨域请求。如果服务器响应允许，则浏览器会继续发起实际的请求¹²。
-
+    
     此外，服务器可以通过设置 `Access-Control-Max-Age` 响应头来指定预检请求的结果可以缓存多长时间，这样在缓存有效期内，相同的跨域请求就不会再次触发 OPTIONS 请求¹。
-
+    
     如果您在编程或者配置服务器时遇到任何问题，或者需要更多帮助，请随时告诉我！
-
+    
     源: 与 Copilot 的对话， 2024/6/7
     (1) 什么时候会发送options请求（预检请求）_什么样的请求会 .... https://blog.csdn.net/yexudengzhidao/article/details/124342081.
     (2) 什么是options请求？为什么会有options请求？ - CSDN博客. https://blog.csdn.net/gwdgwd123/article/details/100554117.
     (3) 什么时候会发送options请求 - 掘金. https://juejin.cn/post/6844903821634699277.
     (4) undefined. https://xxxx.com/micro/share/getShareRecord.
-
+    
 - 代码注释部分
     您提供的代码是设置 CORS（跨源资源共享）策略的 HTTP 响应头部。这些头部用于定义哪些跨域请求是被允许的。下面是每个头部的分析：
 

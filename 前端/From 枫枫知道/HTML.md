@@ -107,3 +107,76 @@ td
 
 ### form标签
 
+<form action="/xxx" method="get" name="form1">    <input value="提交" type="submit"/>    <input value="重置" type="reset"/> </form>
+
+## 行内标签
+
+```html
+<a href="CSS.md">块级标签</a>
+```
+
+<a href="CSS.md">块级标签</a>
+
+- 与其他行内元素并排
+- 设置宽高无效
+- 默认的宽度就是文本内容的宽度
+- 水平方向的 padding 和 margin 属性可以使用
+- 只能容纳文本级元素和内联元素
+
+| 标签     | 作用                  |
+| -------- | --------------------- |
+| a        | 标签定义超链接        |
+| span     | 组合文档中的行内元素  |
+| br       | 定义换行              |
+| b        | 定义字体缩写          |
+| label    | 标签                  |
+| 表单标签 | input textarea select |
+| img      | 图片                  |
+
+### a标签
+
+所谓的超链接是指从一个网页指向一个目标的连接关系，这个目标可以是另一个网页，也可以是相同网页上的不同位置，还可以是一个图片，一个电子邮件地址，一个文件，甚至是一个应用程序。
+
+属性：
+
+target：
+
+- _blank表示在新标签页中打开目标网页
+- _self表示在当前标签页中打开目标网页
+
+download：用于下载
+
+### input标签
+
+| type属性值 | 表现形式     | 对应代码           |
+| ---------- | ------------ | ------------------ |
+| text       | 单行输入文本 | <input type=text"> |
+| password   | 密码输入框   |                    |
+| date       | 日期输入框   |                    |
+| checkbox   | 复选框       |                    |
+| radio      | 单选框       |                    |
+| submit     | 提交按钮     |                    |
+| reset      | 重置按钮     |                    |
+| button     | 普通按钮     |                    |
+| hidden     | 隐藏输入框   |                    |
+| file       | 文本选择框   |                    |
+
+属性说明：
+
+- name：表单提交时的“键”，注意和id的区别
+- value：表单提交时对应项的值
+  - type="button", "reset", "submit"时，为按钮上显示的文本内容
+  - type="text","password","hidden"时，为输入框的初始值
+  - type="checkbox", "radio", "file"，为输入相关联的值
+- checked：radio和checkbox默认被选中的项
+- readonly：text和password设置只读
+- disabled：禁用，所有input均适用
+
+label标签中的for属性会和input中的id关联
+
+```HTML
+<label for="user">
+    用户名
+</label>
+<input placeholder="请输入用户名" id="user">
+```

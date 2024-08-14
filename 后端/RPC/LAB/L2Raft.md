@@ -64,3 +64,46 @@ section6—change membership
    > [Golang time.Sleep()函数及示例|极客教程 (geek-docs.com)](https://geek-docs.com/go-tutorials/go-examples/g_time-sleep-function-in-golang-with-examples.html)
 
 查找资料过程中，还有time.after相关，可以直连channel，但是助教不推荐channel。不太明白
+
+
+
+到底哪些函数需要锁？
+
+
+
+在for 中使用闭包函数的传入问题，在使用过程中一直对同一follower发送投票请求
+
+> 如下例：
+> ```go
+> func main() {
+>     for i := 0; i < 3; i++ {
+>         //i:=i
+>         go func() {
+>             fmt.Println(i)
+>         }()
+>     }
+>     time.Sleep(time.Second)
+> }
+> 
+> ```
+>
+> 他的输出实际为333，当闭包函数执行时，闭包中i已经被更新到3了
+> 所以应该使用i：=i，如注释，以传递副本保证值的正确
+
+
+
+### 重新整理问题
+
+candidate和follower有什么本质区别？
+
+心跳超时
+大家都一样
+
+
+
+ 选举超时 
+每次都初始化
+
+
+
+子函数中创建的 goroutine **不会**随着子函数的结束而结束。goroutine 是独立执行的，并且在创建后，它的生命周期与创建它的函数无关。

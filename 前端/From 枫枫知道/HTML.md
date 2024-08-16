@@ -180,3 +180,41 @@ label标签中的for属性会和input中的id关联
 </label>
 <input placeholder="请输入用户名" id="user">
 ```
+
+## span和div
+https://blog.csdn.net/Obito_TXP/article/details/120106931
+
+# 绝对路径 相对路径
+文件的相对路径和绝对路径
+相对路径
+```
+<img src="./avatar.png" alt="">
+<img src="avatar.png" alt="">
+```
+绝对路径
+```
+<img src="G:\IT\前端项目\qianduan_study\html\avatar.png" alt="">
+web中相对路径和绝对路径
+相对路径
+<form action="xxx">
+    <input type="submit" value="提交">
+</form>
+```
+绝对路径
+```
+<form action="/xxx">
+    <input type="submit" value="提交">
+</form>
+```
+相对路径
+```
+http://localhost:63342/qianduan_study/html/4.%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%92%8C%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84.html
+提交 地址 变成了
+http://localhost:63342/qianduan_study/html/xxx?
+```
+绝对路径
+```
+http://localhost:63342/qianduan_study/html/4.%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%92%8C%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84.html
+提交 地址 变成了
+http://localhost:63342/xxx?
+```

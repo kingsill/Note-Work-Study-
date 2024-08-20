@@ -18,6 +18,8 @@
 
 # 需要修改的函数
 
+注意这里并没有快照，index直接为log的索引， 没有偏移量，为了以后考虑，直接设为0也可以
+
 ## Start
 
 使用 Raft 的服务（例如 k/v 服务器）想要就下一个要附加到 Raft 日志的命令启动协议。需要从这里获取**entry，即command**
@@ -29,8 +31,8 @@
 即使 Raft 实例已被终止，此函数也应该正常返回。
 第一个返回值是命令提交后将出现的索引。第二个返回值是当前任期。如果此服务器认为自己是领导者，则第三个返回值为 true。
 
-1. 首先判断是否leader。是则继续，否则直接返回
-2. 封装后加入log
+- [x] 首先判断是否leader。是则继续，否则直接返回
+- [x] 封装后加入log
 
 ```go
 func (rf *Raft) Start(command interface{}) (int, int, bool) {
@@ -154,14 +156,20 @@ func Make(peers []*labrpc.ClientEnd, me int, persister *Persister,
 
 ## rf.apply()
 
-1. 不需要检查自己的身份
-2. 当有新的commited entry时启动，将其打包为applyMsg再发送到applyCh
+- [x] ~~需要检查自己的身份? 每个peer都要将commited的上传~~
+  ~~leader需要确认，follower需要吗？~~
+  不对，leader确认有commited之后，告知follower，自己再应用
+  只有leader需要确认，follower只要发现committed大于lastApplied就可以应用
+  
+  > 需要
+  
+- [x] 从matchindex中，如果大多数比自己的commitedIndex大，则将一个放入applyCh
 
 
 
 如何检测新的commited entry？
 
-> 
+> matchIndex？
 
 
 
@@ -176,11 +184,45 @@ rf从哪里获取entry？
 
 ## HeartBeats
 
-- [ ] 需要收集append的结果
-- [ ] 没有成功的append需要针对性地在下一次重发
-- [ ] 不能卡在没有结果上，定时下次重传，修改<a href="##sendAppendEntries">sendAppendEntries</a>
-- [ ] 根据不同的peer匹配不同的index等
-- [ ] 给args传递正确的数据，并根据reply调整下次传递的参数
+- [x] 需要收集append的结果
+
+- [x] 没有成功的append需要针对性地在下一次重发
+
+  > 超时的数据不变，下次重复发送
+
+- [x] 不能卡在没有结果上，定时下次重传，修改<a href="##sendAppendEntries">sendAppendEntries</a>
+
+- [x] 根据不同的peer匹配不同的index等
+
+  > 都从rf的nextIndex参数传，发现对不上，则减小一位
+
+- [x] 给args传递正确的数据，并根据reply调整下次传递的参数
+
+  > ```go
+  > type AppendEntriesArgs struct {
+  >     Term         int
+  >     LeaderId     int
+  >     PrevLogIndex int
+  >     PrevLogTerm  int
+  >     Entries      []Entries
+  >     LeaderCommit int
+  > }
+  > ```
+  >
+  > PrevLogIndex怎么获取？
+  > matchIndex-1
+  >
+  > 
+  >
+  > entries怎么设置？
+  > commitedIndex和nextIndex进行对比
+  >
+  > 
+  >
+  > raft中的nextIndex[]和matchIndex[]分别代表什么？
+  >
+  > > `nextIndex[]` 记录了每个从节点下一个应该发送的日志条目的索引。换句话说，领导者知道对于每个从节点，应该从日志的哪个条目开始发送以进行同步。
+  > > `matchIndex[]` 记录了每个从节点已经复制了的日志的最高索引值。这有助于领导者知道哪些日志条目已经被大多数从节点复制，从而可以安全地提交这些日志
 
 ```go
 ```
@@ -191,6 +233,7 @@ rf从哪里获取entry？
 
 - [x] 等待10毫秒，没有结果的话返回false
 
+- [x] 对返回值进行处理，更新matchIndex和nextIndex
 
 
 ```go
@@ -219,7 +262,7 @@ func (rf *Raft) sendAppendEntries(server int, args *AppendEntriesArgs, reply *Ap
 
 需要的igure2的指导：
 
-### 1. **接收请求**
+- [x] ### 1. **接收请求**
 
 - Follower节点收到来自leader的
 
@@ -236,27 +279,27 @@ func (rf *Raft) sendAppendEntries(server int, args *AppendEntriesArgs, reply *Ap
   - `entries[]`：需要被存储的日志条目（可能为空，用于心跳）。
   - `leaderCommit`：Leader的已知已提交日志的索引。
 
-### 2. **步骤A: 任期检查**
+- [x] ### 2. **步骤A: 任期检查**
 
 - 如果收到的`term`比当前节点的任期号小，说明这是一个旧的`AppendEntries`请求，因此拒绝这个请求并返回`false`。
 
-### 3. **步骤B: 日志一致性检查**
+- [x] ### 3. **步骤B: 日志一致性检查**
 
 - 检查本地日志在`prevLogIndex`位置处的条目是否与`prevLogTerm`匹配：
   - 如果不匹配，说明当前Follower的日志与Leader不一致，则拒绝该请求并返回`false`。
   - 如果匹配，则进入下一步。
 
-### 4. **步骤C: 日志复制**
+- [x] ### 4. **步骤C: 日志复制**
 
 - 删除本地日志中从`prevLogIndex+1`位置开始的所有条目，然后将`entries[]`中的新日志条目附加到本地日志中。
 - 这样可以确保Follower与Leader的日志保持一致。
 
-### 5. **步骤D: 更新commitIndex**
+- [x] ### 5. **步骤D: 更新commitIndex**
 
 - 如果`leaderCommit`大于当前Follower的`commitIndex`，那么Follower将其`commitIndex`更新为`leaderCommit`和新日志条目最后一个索引值中的较小值。
 - 这一步确保了Follower的提交进度与Leader保持一致。
 
-### 6. **返回结果**
+- [x] ### 6. **返回结果**
 
 - 如果以上所有检查和操作都成功执行，Follower返回`true`，表示该`AppendEntries RPC`请求处理成功。
 

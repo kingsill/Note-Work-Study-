@@ -351,3 +351,21 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 
 ```
 
+
+
+## index问题
+
+leader：
+ nextIndex[]		用于记录送给各follower的index		初始为leader的最新的log的index+1
+ matchIndex[]		每个follower的最新的log的index		初始为0
+
+all				
+ lastApplied		给状态机的最后一条指令的index				初始0 ，单调增
+ committedIndex	已知的最高的committed的index				初始0
+
+
+
+1. leader收到第一条消息，用自己的nextIndex作为entey的index，在把自己的nextIndex+1
+   同时把自己的matchIndex置为nextIndex，新消息检查
+2. leader在心跳中检查是否有新消息，通过自己的matchIndex和committedIndex进行对比，由于只在start中进行自己的nextIndex修改，所以只要自己的matchIndex大于commitedIndex即有新消息
+

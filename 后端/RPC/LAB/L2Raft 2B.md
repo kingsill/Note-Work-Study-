@@ -34,6 +34,12 @@
 - [x] 首先判断是否leader。是则继续，否则直接返回
 - [x] 封装后加入log
 
+> [!NOTE]
+>
+> 只有这个消息提交时，才返回index
+
+
+
 ```go
 func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	index := -1
@@ -367,5 +373,54 @@ all
 
 1. leader收到第一条消息，用自己的nextIndex作为entey的index，在把自己的nextIndex+1
    同时把自己的matchIndex置为nextIndex，新消息检查
+
 2. leader在心跳中检查是否有新消息，通过自己的matchIndex和committedIndex进行对比，由于只在start中进行自己的nextIndex修改，所以只要自己的matchIndex大于commitedIndex即有新消息
 
+3. 在args填充信息后发送
+
+   > leader刚上任时和普通心跳没有新消息的区别|
+   >
+   > > entries都为空
+   > >
+   > > 刚上任的宣称消息中的leadercommited改为-1
+   > >
+   > > 普通心跳包正常
+   >
+   > 没有消息的心跳包的任务；
+   >
+   > 1. 重置超时时间
+   > 2. 同步commited信息
+
+4. AppendEntries处理
+
+   > 即使arg没有entry，是否要检查prevIndex等
+
+5. leader的heartBeats（sendAppendEntries）再进行处理
+
+   > - 超时
+   >   直接结束，不进行处理
+   > - 未超时
+   >   - 成功
+   >     - 有新消息
+   >       matchIndex更新
+   >       nextIndex更新
+   >     - 无新消息
+   >       不更新
+   >   - 失败
+   >     NextIndex-1
+
+
+
+apply协程
+
+- follower
+  1. command
+
+
+
+新的leader，match清零，prevLogTerm怎么算？
+prevLogIndex 也是应该由 nextIndex来算 ，next是下一条日志的index，所以prev就是next-1
+
+
+
+没有新消息的时候是否也能更新nextIndnex

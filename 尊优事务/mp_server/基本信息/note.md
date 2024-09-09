@@ -68,6 +68,7 @@ if tmp, ok := c.Get("user"); ok {
 ## global
 ## request
 ### user.go
+
 在gin过程中所需的部分用户user相关的结构体定义，用于参数绑定
 
 ## response
@@ -104,9 +105,9 @@ if tmp, ok := c.Get("user"); ok {
     
 ## middleware.go 中间件业务
 - NOTE：跨域请求相关
-    
+  
 - [10分钟和跨域说拜拜|跨域问题so easy_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Nm42157dH/?spm_id_from=333.999.0.0&vd_source=d3dafb5faaa2391d25c0cffb421d2fa0)在处理跨域请求时，浏览器会在某些条件下自动发起 **OPTIONS** 请求，这也被称为“预检”请求。以下是触发 OPTIONS 请求的一些常见条件：
-    
+  
     1. **跨域请求**：当一个请求尝试访问与其不同源（协议、域名或端口不同）的资源时。
     2. **自定义请求头**：如果请求中包含非标准的自定义头部字段。
     3. **特定的 HTTP 方法**：如 PUT、DELETE 等，这些方法可能对服务器数据产生副作用。
@@ -160,6 +161,12 @@ gorm的关联查询 hasOne 模式
 
 gorm的软删除
 >如果模型中包含有g`orm.DeletedAt`字段，调用delete删除时会更新该字段，但不会直接删除该记录
+>
+>
+
+form、json等标签
+
+>https://juejin.cn/post/7005465902804123679
 
 ### bcrypt
 对密码进行加密

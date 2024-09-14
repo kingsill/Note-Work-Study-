@@ -185,8 +185,12 @@ label标签中的for属性会和input中的id关联
 https://blog.csdn.net/Obito_TXP/article/details/120106931
 
 # 绝对路径 相对路径
-文件的相对路径和绝对路径
+
+"/"开头的是绝对路径
+
+**文件的相对路径和绝对路径**
 相对路径
+
 ```
 <img src="./avatar.png" alt="">
 <img src="avatar.png" alt="">
@@ -194,14 +198,16 @@ https://blog.csdn.net/Obito_TXP/article/details/120106931
 绝对路径
 ```
 <img src="G:\IT\前端项目\qianduan_study\html\avatar.png" alt="">
-web中相对路径和绝对路径
+```
+**web中相对路径和绝对路径**
+
+```
 相对路径
 <form action="xxx">
     <input type="submit" value="提交">
 </form>
-```
+
 绝对路径
-```
 <form action="/xxx">
     <input type="submit" value="提交">
 </form>

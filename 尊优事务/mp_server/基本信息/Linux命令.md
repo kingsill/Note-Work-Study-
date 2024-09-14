@@ -24,3 +24,5 @@ netstat -ntlp
 ```
 
 go env -w GOOS=linux
+
+8089 可用

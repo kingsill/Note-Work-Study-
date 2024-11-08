@@ -1,3 +1,7 @@
+# OOP
+
+封装、继承、多态
+
 # 初识对象
 
 - **类(Class):** 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例
@@ -211,3 +215,55 @@ def input_int(number:int,sentence:str)->int:
 ```
 
 ![image-20241107170439569](OOP.assets/image-20241107170439569.png)
+
+## union 注解
+
+联合的类型注解
+
+```python
+from typing import Union #需要导包
+my_list:list[Union[str,int]]=[1,2,"wang"]
+```
+
+union指里面的类型可能是str或int，不知名具体类型
+
+
+
+# 多态
+多态性（polymorphisn）是允许你将父对象设置成为和一个或更多的他的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作。简单的说，就是一句话：允许将子类类型的指针赋值给父类类型的指针。
+
+
+
+# 抽象类 接口
+
+让父类用来确定有哪些方法
+
+具体的方法实现，由子类自行决定
+
+
+
+```python
+class Animal:
+    def spealk(self):
+        pass
+
+class Dog(animal:Animal):
+    def speak(self):
+        print("wolfwolf")
+        
+class Cat(animal:Animal):
+    def speak(self):
+        print("miao")
+ 
+```
+
+继承后，子类实现父类的方法，成为接口
+
+
+
+用于顶层设计，设计标准，便于子类做具体实现，对子类的软性约束
+
+配合多态使用
+
+
+

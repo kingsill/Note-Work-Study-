@@ -1,0 +1,36 @@
+[文档 | Hexo](https://hexo.io/zh-cn/docs/)
+
+# 安装
+
+```shell
+sudo yum install git-core  #git centos
+
+
+
+#Node.js centos use nvm
+# installs nvm (Node Version Manager)   
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+# download and install Node.js (you may need to restart the terminal)
+nvm install 23
+# verifies the right Node.js version is in the environment
+node -v # should print `v23.1.0`
+# verifies the right npm version is in the environment
+npm -v # should print `10.9.0`
+
+
+npm install -g hexo-cli  #hexo
+echo 'PATH="$PATH:./node_modules/.bin"' >> ~/.profile
+```
+
+
+
+# 使用
+
+
+
+```shell
+hexo init <folder>
+cd <folder>
+npm install
+```
+

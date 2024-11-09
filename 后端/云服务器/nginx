@@ -1,0 +1,11 @@
+```shell
+yum install nginx # 安装
+
+nginx -t					# 查看配置文件地址及信息
+
+nginx -s reload            # 重新载入配置文件
+nginx -s reopen            # 重启 Nginx
+nginx -s stop              # 停止 Nginx
+```
+
+ 

@@ -9,3 +9,5 @@ nginx -s stop              # 停止 Nginx
 ```
 
  
+
+http服务的默认端口为80，nginx监控的端口号也为80

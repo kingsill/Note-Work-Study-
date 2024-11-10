@@ -1,27 +1,10 @@
-# hexo
+关于Hexo的文件目录，有几个比较重要：
 
-# 安装前提
+- public：存放生成的页面，要运行生成页面的指令后才出现这个文件夹，部署的话就将这个文件夹下的所有文件放到服务器的nginx的根目录下面就ok了（后面还会说）
+- scaffolds：生成文章的一些模板
+- source：用来存放你的文章，Hexo按照你的文章内容生成html文件。
+- themes：主题，选择一个好看的主题也是一大乐趣。
+- _config.yml: 博客的配置文件，用来更好的调教你的博客，可以修改配置进行自定义个性化。具体什么是什么可以看官网，非常详细。
+  
 
-```shell
-sudo yum install git-core    #git
-
-
-
-# 安装 nvm (Node 版本管理器)	# Node.js
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
-
-# 下载并安装 Node.js（可能需要重启终端）
-nvm install 23
-
-# 验证环境中是否存在正确的 Node.js 版本
-node -v # 应该打印 `v23.1.0`
-
-# 验证环境中是否存在正确的 npm 版本
-npm -v # 应该打印 `10.9.0`					
-
-
-npm install -g hexo-cli			#安装hexo 我们的blog framework
-
-
-```
-
+在你的博客文件source中创建一个名为CNAME文件，不要后缀。写上你的域名。

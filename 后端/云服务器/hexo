@@ -26,7 +26,7 @@ echo 'PATH="$PATH:./node_modules/.bin"' >> ~/.profile
 
 # 使用
 
-
+<folder>
 
 ```shell
 hexo init <folder>
@@ -34,3 +34,72 @@ cd <folder>
 npm install
 ```
 
+
+
+## 常用命令
+
+```shell
+hexo clean
+#清空缓存
+hexo generate
+hexo g #简写
+#重新编译
+hexo server
+hexo s #简写
+#打开本地访问
+hexo new <layout> "文章title"
+#新建文章
+hexo deploy
+hexo d #简写
+#部署到云端
+```
+
+
+
+# 主题
+
+butterfly
+
+在我们上面的<folder>文件夹中，执行
+
+1. 安装主题
+
+```shell
+npm install hexo-theme-butterfly
+```
+
+2. 安装插件
+
+如果你沒有 pug 以及 stylus 的渲染器，請下載安裝：
+
+```shell
+npm install hexo-renderer-pug hexo-renderer-stylus --save
+```
+
+> [!TIP]
+>
+> 在 hexo 的根目錄創建一個文件 _config.butterfly.yml，並把主題目錄的 _config.yml 內容複製到 _config.butterfly.yml 去。
+>
+> 
+>
+> **複製的是主題的 _config.yml ，而不是 hexo 的 _config.yml**
+>
+> 不要把主題目錄的 _config.yml 刪掉
+>
+> 
+>
+> 以後只需要在 _config.butterfly.yml 進行配置就行。如果使用了 _config.butterfly.yml， 配置主題的 _config.yml 將不會有效果。
+>
+> Hexo 會自動合併主題中的 _config.yml 和 _config.butterfly.yml 裏的配置，如果存在同名配置，會使用 _config.butterfly.yml 的配置，其優先度較高。
+>
+> ![image-20241109185454029](hexo.assets/image-20241109185454029.png)
+
+
+
+# 生成永久链接
+
+链接
+
+https://github.com/Rozbo/hexo-abbrlink
+
+Hexo 文章链接默认的生成规则是：`:year/:month/:day/:title`，是按照年、月、日、标题来生成的。

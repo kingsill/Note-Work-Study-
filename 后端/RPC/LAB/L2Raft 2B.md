@@ -732,9 +732,9 @@ received2 覆盖log
 
 
 
-![image-20240826133845285](L2Raft 2B.assets/image-20240826133845285.png)
+![image-20240826133845285](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240826133845285.png)
 
-![image-20240826133830310](L2Raft 2B.assets/image-20240826133830310.png)
+![image-20240826133830310](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240826133830310.png)
 
 append 失败可能性：
 

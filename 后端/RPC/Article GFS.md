@@ -56,7 +56,7 @@ record
 
 ###  结构
 
-![image-20240724141750052](Article GFS.assets/image-20240724141750052.png)
+![image-20240724141750052](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240724141750052.png)
 
 
 
@@ -149,7 +149,7 @@ checkpoints存储形式B-tree
 
 文件命名空间namespaces为原子操作
 
-![image-20240725164322011](Article GFS.assets/image-20240725164322011.png)
+![image-20240725164322011](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240725164322011.png)
 
 文件区域状态有consistent和inconsistent
 
@@ -178,7 +178,7 @@ checkpoints存储形式B-tree
 
 lease租约的默认超时为60s，但是可以续约。在HeartBeat包中包含相关内容
 
-![image-20240730110030751](Article GFS.assets/image-20240730110030751.png)
+![image-20240730110030751](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240730110030751.png)
 
 ### 3.2 Data Flow
 

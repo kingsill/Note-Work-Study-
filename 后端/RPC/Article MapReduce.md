@@ -17,7 +17,7 @@
 3. Implementation 实现
 3.1 执行概述
 
-![image-20240703164223099](C:\Users\wang2\AppData\Roaming\Typora\typora-user-images\image-20240703164223099.png)
+![image-20240703164223099](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240703164223099.png)
 
 3.2 数据结构
 

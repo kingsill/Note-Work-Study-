@@ -114,7 +114,7 @@ candidate和follower有什么本质区别？
 
 ## 结果：
 
-![image-20240815110338757](L2Raft 2A.assets/image-20240815110338757.png)
+![image-20240815110338757](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240815110338757.png)
 
 存在data race，有问题的话之后再改吧
 

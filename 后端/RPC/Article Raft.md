@@ -80,9 +80,9 @@ Raft 通过首先选举一个有区别的领导者来实现共识，然后让领
 
 领导者接受来自客户端的日志条目，在其他服务器上复制它们，并告诉服务器何时可以安全地将日志条目应用于他们的状态机
 
-![image-20240806163152431](Article Raft.assets/image-20240806163152431.png)
+![image-20240806163152431](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240806163152431.png)
 
-![image-20240806163202814](Article Raft.assets/image-20240806163202814.png)
+![image-20240806163202814](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240806163202814.png)
 
 ## 5.1 Raft basics
 
@@ -99,14 +99,14 @@ Raft 通过首先选举一个有区别的领导者来实现共识，然后让领
 3. candidate
    第三个状态候选，用于选举一个新的领导者，如下所述Figure 4
 
-![image-20240806163905369](Article Raft.assets/image-20240806163905369.png)
+![image-20240806163905369](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240806163905369.png)
 
 
 
 **term**
 每个term只有一个leader
 
-![image-20240806164142762](Article Raft.assets/image-20240806164142762.png)
+![image-20240806164142762](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240806164142762.png)
 
 > term在Raft中充当逻辑始终logical clock，每个服务器存储器信息
 >
@@ -177,7 +177,7 @@ term number+1
 
 每个log还有一个记录对应的term number 和log index
 
-![image-20240807093813709](Article Raft.assets/image-20240807093813709.png)
+![image-20240807093813709](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240807093813709.png)
 
 *committed* entry
 
@@ -185,7 +185,7 @@ term number+1
 > 需要大多数server已经复制该条目，如图六的log7
 > followers直到log提交后，应用到其本地状态机
 
-![image-20240807095612041](Article Raft.assets/image-20240807095612041.png)
+![image-20240807095612041](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240807095612041.png)
 
 在Raft中，领导者通过强迫追随者的日志复制自己的日志来处理不一致。这意味着跟随者日志中的冲突条目将被来自领导者日志的条目覆盖。第5.4节将说明，如果加上另外一个限制（要求想成为candidate必须要知道所有的committed log），这样做是安全的。
 
@@ -233,13 +233,13 @@ Raft使用投票过程来阻止候选人赢得选举，除非其日志包含所�
 
 ### 5.4.2 Committing entries from previous terms
 
-![image-20240807102938620](Article Raft.assets/image-20240807102938620.png)
+![image-20240807102938620](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240807102938620.png)
 
 
 
 ### 5.3 Safety argument
 
-![image-20240807103947122](Article Raft.assets/image-20240807103947122.png)
+![image-20240807103947122](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240807103947122.png)
 
 如何解决committed 过的log entry不会被覆盖？只靠term #好像不可靠？
 
@@ -287,7 +287,7 @@ broadcastTime ≪ electionTimeout ≪ MTBF
 
 图 12 显示了 Raft 中快照的基本思想。
 
-![image-20240808112610803](Article Raft.assets/image-20240808112610803.png)
+![image-20240808112610803](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240808112610803.png)
 
 覆盖committed entries还是state machine 已经应用的entry
 
@@ -305,7 +305,7 @@ broadcastTime ≪ electionTimeout ≪ MTBF
 
 领导者使用一个名为InstallSnapshot的新RPC将快照发送到太落后的追随者;参见图13。
 
-![image-20240808132044127](Article Raft.assets/image-20240808132044127.png)
+![image-20240808132044127](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240808132044127.png)
 
 
 

@@ -30,11 +30,11 @@ Statemachine Approach 状态机
 
 对虚拟机的故障检测为 Fault-stop failures，[《分布式系统：概念与设计》一2.4.2　故障模型-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/174386)
 
-![image-20240801093309271](Article Fault-Tolerance Virtual Machinese.assets/image-20240801093309271.png)
+![image-20240801093309271](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240801093309271.png)
 
 ## 2. BASIC FT DESIGN
 
-![image-20240801093547164](Article Fault-Tolerance Virtual Machinese.assets/image-20240801093547164.png)
+![image-20240801093547164](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240801093547164.png)
 
 两个虚拟机是虚拟同步的，虚拟机的虚拟磁盘位于共享存储上
 
@@ -81,7 +81,7 @@ event delivery mechanism
 
 在备份VM接收到并确认与生成输出的操作关联的日志项之前，主VM可能不会向外部世界发送输出。
 
-![image-20240801111002278](Article Fault-Tolerance Virtual Machinese.assets/image-20240801111002278.png)
+![image-20240801111002278](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240801111002278.png)
 
 
 
@@ -115,7 +115,7 @@ FT会选择合适的server来创建备份机
 
 从机每次将log entries读到缓冲，就像主机报告
 
-![image-20240801170643268](Article Fault-Tolerance Virtual Machinese.assets/image-20240801170643268.png)
+![image-20240801170643268](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240801170643268.png)
 
 为了防止主备份的缓冲满，会调整主机的CPU占用率
 

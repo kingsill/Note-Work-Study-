@@ -20,7 +20,7 @@ print输出不换行：
 
 特殊字符  \t 可以在多行中对齐，制表符
 
-![image-20241028092258854](while.assets/image-20241028092258854.png)
+![image-20241028092258854](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20241028092258854.png)
 
 
 

@@ -14,13 +14,13 @@ majority vote
 
 在KVserver。table为state
 
-![image-20240808101548280](lec6.assets/image-20240808101548280.png)
+![image-20240808101548280](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240808101548280.png)
 
 
 
 时间序列示意图
 
-![image-20240808102344051](lec6.assets/image-20240808102344051.png)
+![image-20240808102344051](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240808102344051.png)
 
 
 

@@ -100,6 +100,38 @@ npm install hexo-renderer-pug hexo-renderer-stylus --save
 
 链接
 
-https://github.com/Rozbo/hexo-abbrlink
+https://github.com/Rozbo/hexo-abbrlink  
+
+[永久链接（Permalinks） | Hexo](https://hexo.io/zh-cn/docs/permalinks)
 
 Hexo 文章链接默认的生成规则是：`:year/:month/:day/:title`，是按照年、月、日、标题来生成的。
+
+```yaml
+# permalink: :year/:month/:day/:title/
+permalink: :category/:title/
+```
+
+
+
+# 配置文档 说明 _config.yml
+
+[配置 | Hexo](https://hexo.io/zh-cn/docs/configuration)
+
+
+
+# 写作
+
+```shell
+hexo new [layout] <title>
+```
+
+layout布局，默认post，即发布状态，改为draft会放入草稿箱
+
+```shell
+hexo publish [layout] <title>
+```
+
+> [!NOTE]
+>
+> layout布局在scaffolds文件夹内有对应的模板，可以自定义
+

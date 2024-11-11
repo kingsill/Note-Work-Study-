@@ -85,13 +85,13 @@ h3{
 
 # 盒模型
 
-![image-20240909203211056](CSS.assets/image-20240909203211056.png)
+![image-20240909203211056](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240909203211056.png)
 
 
 
-![image-20240909203302621](CSS.assets/image-20240909203302621.png)
+![image-20240909203302621](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240909203302621.png)
 
-![image-20240909212905452](CSS.assets/image-20240909212905452.png)
+![image-20240909212905452](https://zilong-blog-butterfly.oss-cn-shanghai.cs.com/image-20240909212905452.png)
 
 ## 盒子宽度模式
 
@@ -144,7 +144,7 @@ solid   实线 dashed  虚线 dotted  点线 double  双实线
 
 需要什么样的三角形，就让其他的三角形颜色是透明的 `transparent`
 
-![image-20240909220748784](CSS.assets/image-20240909220748784.png)
+![image-20240909220748784](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240909220748784.png)
 
 ## outline 设置
 
@@ -178,11 +178,11 @@ position属性
 
 1. 相对元素之前的位置
 2. 之前的位置还在文档流中
-3. ![image-20240910210847186](CSS.assets/image-20240910210847186.png)
+3. ![image-20240910210847186](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240910210847186.png)
 
 ## 绝对定位
 
 1. 脱离文档流
 2. 找父级非static的元素进行偏移，找不到就层层往上，直到body
 
-![image-20240910210858662](CSS.assets/image-20240910210858662.png)
+![image-20240910210858662](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240910210858662.png)

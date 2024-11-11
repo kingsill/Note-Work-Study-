@@ -1,13 +1,13 @@
 # 使用模板
 1. 服务器安装docker
-    
+   
     ```shell
     # 安装 最新 docker
     sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
+   
     # 启动& 开机启动docker； enable + start 二合一
     systemctl enable docker --now
-
+   
     # 配置加速
     sudo mkdir -p /etc/docker
     sudo tee /etc/docker/daemon.json <<-'EOF'
@@ -53,7 +53,7 @@ images镜像 - 软件包
 containers容器 - 运行的软件包 应用
 
 理解容器
-    ![alt text](image-1.png)
+    ![alt text](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-1.png)
     **应用隔离** 的同时 不会拥有自己的操作系统，**共享操作系统内核** 
     类似轻量化的虚拟机，容器**拥有自己的文件系统**、内存、进程空间
 
@@ -208,7 +208,7 @@ docker为容器分配唯一ip，使用容器ip+端口互相访问
     现在使用容器名+端口即可访问
 
 ### redis集群模拟
-![alt text](image-2.png)
+![alt text](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-2.png)
 
 ```shell
 #自定义网络

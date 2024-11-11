@@ -46,7 +46,7 @@ New Replica
 
 ## VMWARE FT
 
-![image-20240802153014650](lec4.assets/image-20240802153014650.png)
+![image-20240802153014650](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240802153014650.png)
 
 backup的结果不要，在vmm丢掉
 

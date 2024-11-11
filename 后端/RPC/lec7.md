@@ -19,7 +19,7 @@ xterm
 
 ## persistent
 
-![image-20240808152110056](lec7.assets/image-20240808152110056.png)
+![image-20240808152110056](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240808152110056.png)
 
 
 
@@ -43,8 +43,8 @@ xterm
 
 以下是linearizable的吗？
 
-![image-20240808155623532](lec7.assets/image-20240808155623532.png)
+![image-20240808155623532](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240808155623532.png)
 
 不是，要求一个操作结束再进行另一个操作
 
-![image-20240808155843054](lec7.assets/image-20240808155843054.png)
+![image-20240808155843054](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240808155843054.png)

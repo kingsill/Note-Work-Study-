@@ -153,9 +153,9 @@ solid   实线 dashed  虚线 dotted  点线 double  双实线
 1. 不占用盒子的宽度
 2. 只能设置整个的，没有单个方向的
 
-# css定位
+## css定位
 
-position属性
+_position属性_
 
 | 值       | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -186,3 +186,39 @@ position属性
 2. 找父级非static的元素进行偏移，找不到就层层往上，直到body
 
 ![image-20240910210858662](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-20240910210858662.png)
+
+
+
+# 图层
+
+只能在定位元素撒谎给你生效
+
+父子关系不生效
+
+
+
+z-index关键词
+
+
+
+# 渐变
+
+background-image: linear-gradient(渐变方向, 颜色1[位置1], 颜色2[位置2], 颜色3[位置3]...);
+
+```css
+background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+```
+
+使用角度表示，例如0deg等同于to top， 90deg等同于to right
+
+### 径向渐变
+
+```CSS
+background-image: radial-gradient(颜色1 覆盖区域大小, 颜色2 覆盖区域大小, … );
+```
+
+圆形
+
+```CSS
+background-image: radial-gradient(circle, red, blue);
+```

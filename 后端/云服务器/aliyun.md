@@ -27,15 +27,7 @@
 
 
 # RAM用户
-
+picgo@1182720574688490.onaliyun.com 
 keyid：LTAI5tSYC7xXP6aPUG3YNAAH
 
 secret：qqRC76fqYdaQErYZY2oDlLA5Z1sOy9
-
-
-
-用户登录名称 picgo@1182720574688490.onaliyun.com 
-
-- AccessKey ID LTAI5tSYC7xXP6aPUG3YNAAH
-
-- AccessKey Secret qqRC76fqYdaQErYZY2oDlLA5Z1sOy9

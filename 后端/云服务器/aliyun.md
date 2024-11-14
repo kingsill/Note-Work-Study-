@@ -25,9 +25,3 @@
 [通过ECS控制台创建SSH密钥对_云服务器 ECS(ECS)-阿里云帮助中心](https://help.aliyun.com/zh/ecs/user-guide/create-an-ssh-key-pair?spm=5176.ecscore_keyPair.console-base_help.dexternal.12bd4df5YxDoqI)
 
 
-
-# RAM用户
-picgo@1182720574688490.onaliyun.com 
-keyid：LTAI5tSYC7xXP6aPUG3YNAAH
-
-secret：qqRC76fqYdaQErYZY2oDlLA5Z1sOy9

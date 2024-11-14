@@ -2,8 +2,31 @@
 
 ## 可继承
 
+```css
+        .txt {
+            font-size: 100px; /* 字体大小 */
+            font-style: italic; /* 字体 */
+            text-decoration: underline deeppink; /* 字体的上划线、下划线等 */
+            font-weight: bold; /* 宽度 */
+            text-indent: 2rem; /* 首行缩进 */
+            text-transform: capitalize; /* 大小写控制 */
+            line-height: 1.5em; /* 行间距 */
+            letter-spacing: 2rem; /* 字符间距 */
+            word-spacing: 2rem;
+            white-space: nowrap; /*换行控制*/
+            overflow: hidden; /*溢出隐藏*/
+            text-overflow: ellipsis; /*省略号显示*/
+
+            text-align: center; /*水平对齐*/
+            vertical-align: middle; /*垂直对齐*/
+        }
+```
+
+
+
 rem和em：
 
 > - **rem（root em）**：是相对于根元素（`<html>`元素）的字体大小来计算的。例如，如果根元素（`<html>`）的字体大小设置为 16px，那么 1rem 就等于 16px；如果根元素字体大小设置为 20px，1rem 就等于 20px。
 > - **em**：是相对于元素的父元素的字体大小来计算的。比如，一个`<div>`元素内有一个`<p>`元素，`<div>`的字体大小为 18px，那么对于`<p>`元素来说，如果它的字体大小设置为 1em，其实际大小就是 18px；如果`<p>`元素的字体大小设置为 2em，实际大小就是 36px。
 
+[枫枫知道个人博客](https://www.fengfengzhidao.com/special/2/31)

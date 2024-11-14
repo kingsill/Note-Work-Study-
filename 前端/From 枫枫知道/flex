@@ -1,0 +1,40 @@
+[CSS3 弹性盒子 | 菜鸟教程](https://www.runoob.com/css3/css3-flexbox.html)
+
+[枫枫知道个人博客](https://www.fengfengzhidao.com/special/2/33)
+
+# felx布局
+
+CSS3 弹性盒（ Flexible Box 或 flexbox），是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。
+
+引入弹性盒布局模型的目的是提供一种更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间。
+
+
+
+弹性容器外及弹性子元素内是正常渲染的。弹性盒子只定义了弹性子元素如何在弹性容器内布局。
+
+弹性子元素通常在弹性盒子内一行显示。默认情况每个容器只有一行。
+
+---
+
+快捷语句
+
+```css
+.flex>.item*8
+/*按table键后会自动生成下面内容*/
+<div class="flex">
+    <div class="table"></div>
+    <div class="table"></div>
+    <div class="table"></div>
+    <div class="table"></div>
+    <div class="table"></div>
+    <div class="table"></div>
+    <div class="table"></div>
+    <div class="table"></div>
+</div>
+```
+
+---
+
+采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。
+
+它的所有 子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。

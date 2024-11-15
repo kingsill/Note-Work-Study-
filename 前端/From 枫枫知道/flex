@@ -38,3 +38,142 @@ CSS3 弹性盒（ Flexible Box 或 flexbox），是一种当页面需要适应�
 采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。
 
 它的所有 子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
+
+
+
+## 容器属性
+
+```css
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .box {
+
+        }
+
+        .flex {
+            width: 400px;
+            height: 500px;
+            display: flex;
+            justify-content: space-around; /*定义项目在主轴上的排序方式*/
+            flex-direction: row; /*主轴方向*/
+            align-items: center; /*交叉轴上对齐方式*/
+            background-color: darkgray;
+            flex-wrap: wrap; /*换行*/
+        }
+
+        .flex .item {
+            width: 100px;
+        }
+
+        .item {
+            width: 40px;
+            height: 40px;
+            background-color: #198464;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="flex">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+</div>
+
+
+</body>
+</html>
+```
+
+
+
+## 项目属性
+
+```css
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex2</title>
+    <style>
+
+        .flex {
+            display: flex;
+            /*width: 400px;*/
+            height: 400px;
+            background-color: bisque;
+            justify-content: space-around;
+        }
+
+        .item {
+            width: 40px;
+            height: 40px;
+            background-color: coral;
+            text-align: center;
+            margin: 2px;
+        }
+
+        .flex2 {
+            display: flex;
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+            /*justify-content: space-around;*/
+        }
+
+        .flex3 {
+            display: flex;
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+            /*justify-content: space-around;*/
+        }
+
+        /*
+        margin可以实现布局的上下左右位置的分布
+        */
+        .flex3 .item:nth-child(2) {
+            margin: auto;
+        }
+
+        .flex2 .item:nth-child(2) {
+            margin: 0 auto;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="flex">
+    <div class="item" style="order: 8">1</div>
+    <div class="item" style="flex-grow: 0.5">2</div>
+    <div class="item" style="flex-grow: 1;align-self: center">3</div>
+    <div class="item" style="flex-grow: 1">4</div>
+</div>
+
+<div class="flex2">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+</div>
+
+<div class="flex3">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+</div>
+
+
+</body>
+</html>
+```
+

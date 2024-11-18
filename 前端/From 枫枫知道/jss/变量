@@ -1,0 +1,137 @@
+# 声明
+
+1. var
+   - 变量提升
+   - 提升作用域
+   - 全局变量挂载到window
+
+```javascript
+    console.log(person)
+    var person = "wang";
+    console.log(person)
+----上下一致
+var person;        // 变量声明被提升
+console.log(person); // 此时 person 的值是 undefined
+person = "wang";    // 给变量赋值
+console.log(person); // 此时 person 的值是 "wang"
+```
+
+2. let
+   1. 块级作用域
+   2. 暂时性死区
+
+3. const
+   1. 常量，声明就需要初始化
+   2. 通常用于声明数组和对象
+
+## ==和===
+
+在js里面，判断变量是否相同通常使用===
+
+==是值判断，不会去判断类型
+
+===是值和类型一起判断
+
+
+
+## 数据类型
+
+![](C:/Users/wang2/AppData/Roaming/Typora/typora-user-images/image-20241118161322539.png)
+
+### string number bool
+
+```javascript
+  console.log(person)
+    var person = "wang";
+    console.log(person)
+
+    const a = 123
+    const a1 = Number(123)
+    console.log(a, typeof a)
+    console.log(a1, typeof a1)
+
+    const a2 = 0b110//2进制
+    console.log(a2)
+
+    保留小数，toFixed
+    const a3 = 3.1415926
+    console.log(a3.toFixed(2))//保留2位小数
+
+    const s1 = "long"
+    const s2 = String("long")
+    console.log(s1, s2)
+
+    //indexOf 根据字符找编号
+    console.log(s1.indexOf('l'))
+    console.log(s2.indexOf('w'))//没有的话返回-1
+
+    const s3 = "nihao,fuck you,sb"
+    afterSplit = s3.split(',')
+    console.log(afterSplit, typeof afterSplit)//切割得到数组
+
+    afterSlice = s3.slice(0, 5)//左闭右开
+    console.log(afterSlice)
+
+    //includes判断是否有字串包含
+
+    //trim去前后空格
+    const name = ' wa  ng'
+    afterTrim = name.trim()
+    console.log(afterTrim)
+
+
+    boolean 其他值转bool
+    false、0、""、null、undefined、NaN 转为 布尔值 为 false
+```
+
+### object
+
+类似于 键值对
+
+```javascript
+    const ShenLong = {
+        name: "wangzilong",//可以省略引号
+        age: 18
+    }
+    const ShenLong2 = {
+        "name": "wangzilong",
+        "age": 18,
+    }
+
+    console.log(ShenLong, typeof ShenLong)
+    console.log(ShenLong2, typeof ShenLong2)
+
+    console.log(ShenLong.age)
+    console.log(ShenLong2.name)
+
+    ShenLong.age = 23
+    delete ShenLong.age
+
+    const name = "fengfeng"
+    const obj = {
+        [name]: ""//方括号为取其中的值的问题
+    }
+```
+
+### null
+
+null表示一个空值或没有对象值。它是一个表示空对象指针的特殊关键字。
+
+null的用法：
+
+1. 作为函数的参数，表示该函数的参数不是对象。
+2. 作为对象原型链的终点。
+
+### undefined
+
+undefined表示一个未定义的值。它通常表示变量已声明但尚未赋值，或者属性不存在
+
+总的来说，null 和 undefined 都表示空，主要区别在于 undefined 表示尚未初始化的变量的值，而 null 表示该变量有意缺少对象指向。
+
+
+
+### symbol
+
+由于每一个 Symbol 的值都是不相等的，所以 Symbol 作为对象的属性名，可以保证属性不重名。
+
+1. **Symbol是什么？**   - 在JavaScript中，`Symbol`是一种基本数据类型，就像数字（`Number`）、字符串（`String`）、布尔值（`Boolean`）一样。它的主要作用是用来创建独一无二的值。 2. **创建Symbol**   - 可以使用`Symbol()`函数来创建一个`Symbol`。例如：   ```javascript   let mySymbol = Symbol();   console.log(mySymbol);   ```   - 每次调用`Symbol()`函数都会返回一个新的、独一无二的`Symbol`值。这就好比是给每个`Symbol`都贴上了一个独一无二的“标签”。 3. **Symbol作为对象属性名**   - **基本用法**：`Symbol`很重要的一个用途是作为对象的属性名。传统的字符串属性名可能会出现冲突，而`Symbol`作为属性名可以有效避免这种情况。例如：   ```javascript   let obj = {};   let sym = Symbol('description');   obj[sym] = 'value';   console.log(obj[sym]);    ```   - 在这个例子中，`sym`是一个`Symbol`，它被用作`obj`对象的属性名，并且可以通过`obj[sym]`的方式来访问和设置这个属性的值。   - **为什么能避免冲突？**：假设你使用了一个第三方库，这个库在一个对象上添加了很多属性。如果你的代码也想在同一个对象上添加属性，很可能会不小心覆盖掉第三方库添加的属性。但是如果使用`Symbol`作为属性名，因为它是独一无二的，就几乎不可能出现这种覆盖的情况。 4. **Symbol的一些特殊应用场景**   - **隐藏内部实现细节**：在编写类或者模块的时候，可以使用`Symbol`来定义一些不希望被外部直接访问和修改的属性或者方法。例如，一个对象有一些内部的状态或者方法，不希望被外部代码随意调用，就可以用`Symbol`来定义这些属性，使得外部代码很难直接访问到它们。   - **实现私有属性（近似）**：虽然JavaScript没有像其他语言那样严格的私有属性机制，但可以用`Symbol`来模拟一种私有属性的效果。例如：   ```javascript   let _privateSymbol = Symbol();   class MyClass {       constructor() {           this[_privateSymbol] = 'private value';       }       getPrivateValue() {           return this[_privateSymbol];       }   }   let myObj = new MyClass();   // console.log(myObj[_privateSymbol]); // 这一行会报错，因为无法直接访问Symbol属性   console.log(myObj.getPrivateValue());   ```   - 在这个例子中，`_privateSymbol`被用作一个类似于私有属性的东西，外部代码很难直接访问到它，只有通过类内部定义的`getPrivateValue`方法才能获取这个属性的值。

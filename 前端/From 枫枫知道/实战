@@ -1,0 +1,20 @@
+
+
+
+
+
+
+1. `top`和`left`属性中的百分比
+
+   - 当使用`top`和`left`属性并设置为百分比时，它们是相对于元素的 ** 包含块（containing block）** 的高度和宽度而言的。
+
+   - 对于绝对定位（
+
+     ```
+     position: absolute
+     ```
+
+     ）的元素，其包含块的确定规则如下：
+
+     - 如果元素的祖先元素中有`position`属性设置为`relative`、`absolute`或`fixed`的，那么离该元素最近的这样的祖先元素就是它的包含块。
+     - 例如，在你之前修改的代码中，`.slogan`和`.abs`元素是绝对定位的，它们的包含块是相对定位（`position: relative`）的`.banner - wrapper`元素。所以`top: 50%`意味着元素的顶部距离`.banner - wrapper`元素顶部的距离是`.banner - wrapper`元素高度的 50%；`left: 50%`意味着元素的左侧距离`.banner - wrapper`元素左侧的距离是`.banner - wrapper`元素宽度的 50%。这样，元素的中心就会大致定位在包含块的中心位置，但此时元素的左上角在这个中心位置，还需要进一步调整才能真正居中。

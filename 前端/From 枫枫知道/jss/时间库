@@ -1,0 +1,44 @@
+# JavaScript Date 对象
+
+[JavaScript Date 对象 | 菜鸟教程](https://www.runoob.com/jsref/jsref-obj-date.html)
+
+```javascript
+    var time = new Date().getTime()//获取时间戳 13位
+    console.log(time)
+    var timeNow = new Date(time)//获取当前时间 根据时间戳
+    console.log(timeNow)
+
+    const data = new Date()//获取最新时间
+    console.log(data)
+
+    console.log(data.getFullYear())
+    console.log(data.getMonth() + 1)//月份从0开始计,所以需要+1
+    console.log(data.getDate())
+    console.log(data.getHours())
+    console.log(data.getMinutes())
+
+
+    //解析为当前时间
+    function parseDate(date) {
+        let time
+        time = new Date(date || new Date())
+        let Y = time.getFullYear()
+        let M = time.getMonth() + 1
+        let D = time.getDate()
+
+        const h = time.getHours().toString().padStart(2, "0")//字符串的padStart可以补0
+        const m = time.getMinutes().toString().padStart(2, "0")
+        const s = time.getSeconds().toString().padStart(2, "0")
+        cnDate = `${Y}-${M}-${D} ${h}:${m}:${s}`
+        console.log(cnDate)
+    }
+
+    parseDate("Tue Nov 19 2024 15:05:44 GMT+0800")
+    parseDate()
+    parseDate(1731999443760)
+```
+
+
+
+## 时间计算
+

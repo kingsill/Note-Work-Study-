@@ -1,0 +1,89 @@
+## 逻辑运算符
+
+流程控制的关键，掌管进退的神
+
+一般用于编写复合逻辑
+
+### 与 &&
+
+需要满足同时成立
+
+```JavaScript
+const name = "fengfeng"
+const age = 12
+console.log(age >= 18 && name.startsWith("f"))
+```
+
+### 或 &&
+
+满足其中一个条件成立即可
+
+```JavaScript
+const name = "fengfeng"
+const age = 12
+console.log(age >= 18 || name.startsWith("f"))
+```
+
+### 非 !
+
+```JavaScript
+console.log(!(age >= 18) )
+```
+
+## 循环语句
+
+### 传统for循环
+
+```JavaScript
+// 1+2+...+100
+let sum = 0
+for (let i = 1; i <= 100; i++) {
+    // 循环体
+    sum += i // sum = sum+1
+}
+// i=1  sum = 0 + 1
+// i=2 sum = 1+2
+// i=3 sum = 3 + 3
+// i=4 sum = 6 + 4
+// ...
+console.log(sum)
+```
+
+### for in循环
+
+for...in循环可以用来遍历对象的可枚举属性列表（包括原型链上的属性）
+
+用于遍历对象
+
+```JavaScript
+const obj = {
+    name:"枫枫",
+    age: 21
+}
+for (const objKey in obj) {
+    console.log(objKey)
+}
+```
+
+### for of循环
+
+用于遍历数组
+
+```JavaScript
+const array = ["枫枫", "张三"]
+for (const item of array) {
+    console.log(item)
+}
+```
+
+### do while循环
+
+先执行一次循环体，再进行条件判断
+
+先执行一次循环体，再进行条件判断
+
+```JavaScript
+do {
+//循环体代码--条件表达式为true 时重复循环体代码
+} while (条件表达式)
+```

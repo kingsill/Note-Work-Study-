@@ -20,3 +20,80 @@
 | location.search 位置.搜索       | ?name=ff ?名称=ff            | 查询参数                                                     |
 
 可以重新赋值
+
+
+
+## 定时器
+
+[JavaScript 计时事件 | 菜鸟教程](https://www.runoob.com/js/js-timing.html)
+
+### 防抖、节流
+
+#### 防抖
+
+闭包相关，变量的作用区域
+
+[JavaScript 闭包 | 菜鸟教程](https://www.runoob.com/js/js-function-closures.html)
+
+用户点击按钮的时候，点太快了点了两下，那么这个函数就会被执行两次
+
+```javascript
+    function so() {
+        console.log("hello");
+    }
+
+    function debounce(func, delay) {
+        let timer; // 这里的 timer 要保存到 debounce 作用域]
+        let count = 0//只在debounce初次运行时初始化一次
+        return function (...args) { // 返回一个闭包
+            clearTimeout(timer); // 清除之前的定时器
+            count = count + 1
+            console.log(`${count}`)          
+            timer = setTimeout(() => {
+                func.apply(this, args); // 延迟执行传入的函数
+            }, delay)
+        }
+    }
+
+    // 重新包装 so 函数
+    const debouncedSo = debounce(so, 1000);
+    const debouncedSo2 = debounce(so2, 1000);
+```
+
+#### 节流
+
+在规定的单位时间内，只能有一次触发事件的回调函数执行，如果在同一时间内被触发多次，只会生效一次
+
+```javascript
+
+    function throttle(fn, delay) {
+        let t1 = new Date()
+        return function (...arg) {
+            let t2 = Date.now()
+            let diff = t2 - t1
+            t1 = t2
+            console.log(diff)
+            if (diff > delay) {
+                fn.apply(this, arg)
+            }
+        }
+    }
+
+    const throttleHandler = throttle(so, 1000)
+```
+
+
+
+## window界面属性
+
+### 屏幕，窗口，视口
+
+```JavaScript
+console.log("视口", window.innerWidth, window.innerHeight)
+console.log("窗口", window.outerWidth, window.outerHeight)
+console.log("屏幕", window.screen.width, window.screen.height)
+```
+
+navigator
+
+[枫枫知道个人博客](https://www.fengfengzhidao.com/special/2/54)

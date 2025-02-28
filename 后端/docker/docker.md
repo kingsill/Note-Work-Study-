@@ -4,10 +4,10 @@
     ```shell
     # 安装 最新 docker
     sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-   
+      
     # 启动& 开机启动docker； enable + start 二合一
     systemctl enable docker --now
-   
+      
     # 配置加速
     sudo mkdir -p /etc/docker
     sudo tee /etc/docker/daemon.json <<-'EOF'
@@ -208,6 +208,7 @@ docker为容器分配唯一ip，使用容器ip+端口互相访问
     现在使用容器名+端口即可访问
 
 ### redis集群模拟
+
 ![alt text](https://zilong-blog-butterfly.oss-cn-shanghai.aliyuncs.com/article/image-2.png)
 
 ```shell
